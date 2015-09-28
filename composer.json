@@ -1,0 +1,17 @@
+{
+    "name": "root/dependency-injection-training",
+    "authors": [
+        {
+            "name": "Piotr Papala",
+            "email": "piotr.papala@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/dependency-injection": "~2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "DependencyInjectionTraining\\": "src/"
+        }
+    }
+}
