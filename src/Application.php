@@ -26,10 +26,26 @@ class Application
     }
 
     /**
+     * This is to get dependency injection container, so you may use it anywhere you want.
+     * @return ContainerBuilder
+     */
+    public function getDependencyInjectionContainer()
+    {
+        return $this->container;
+    }
+
+    /**
      * This function starts the application.
      */
     public function start()
     {
         echo "Application started.\n";
+
+        // create Process object using dependency injection container
+        // It will load EmailNotifier automatically and use it to construct object of Process class.
+        $process = $this->getDependencyInjectionContainer()->get('process');
+
+        // just run some function
+        $process->doSomething();
     }
 }

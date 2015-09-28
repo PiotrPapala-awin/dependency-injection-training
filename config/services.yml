@@ -1,4 +1,8 @@
 services:
+  process:
+    class: DependencyInjectionTraining\Process
+    arguments:
+      - @email-notifier
 
-  email.notifier:
-      class: DependencyInjectionTraining\EmailNotifier
+  email-notifier:
+    class: DependencyInjectionTraining\EmailNotifier
