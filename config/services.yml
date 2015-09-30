@@ -3,6 +3,14 @@ services:
     class: DependencyInjectionTraining\Process
     arguments:
       - @email-notifier
+  
 
   email-notifier:
     class: DependencyInjectionTraining\EmailNotifier
+    
+  #console-notifier:
+      #class: DependencyInjectionTraining\ConsoleNotifier
+      
+  #snail-notifier:
+      #class: DependencyInjectionTraining\SnailNotifier  
+      

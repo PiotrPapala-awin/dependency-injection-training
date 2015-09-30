@@ -7,23 +7,17 @@ namespace DependencyInjectionTraining;
  */
 class Process
 {
-    /** @var  EmailNotifier */
-    private $emailNotifier;
+    private $notifier;
 
-
-    public function __construct(EmailNotifier $emailNotifier)
+    public function __construct(NotifyInterface $notifier)
     {
-        // some comment here
-        $this->emailNotifier = $emailNotifier;
+          $this->notifier = $notifier;
     }
 
     public function doSomething()
     {
-        echo "Doing anything...\n";
-
-        // use notifier here
-        $this->emailNotifier->notify('Super extra notification');
-
+        echo "Doing something here...\n";
+      
+        $this->notifier->notify();
     }
-
 }
