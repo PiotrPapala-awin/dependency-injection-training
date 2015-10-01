@@ -13,12 +13,13 @@ class Process
 
     public function __construct(EmailNotifier $emailNotifier)
     {
+        // some comment here
         $this->emailNotifier = $emailNotifier;
     }
 
     public function doSomething()
     {
-        echo "Doing something...\n";
+        echo "Doing anything...\n";
 
         // use notifier here
         $this->emailNotifier->notify('Super extra notification');
