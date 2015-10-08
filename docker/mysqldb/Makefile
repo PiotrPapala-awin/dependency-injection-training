@@ -1,8 +1,5 @@
 all:
 	
-RunCodeSniffer:
-	vendor/bin/phpcs -p --colors --standard=PSR2 src/
-
 build:
 	make buildmysql
 
@@ -10,7 +7,8 @@ buildmysql:
 	docker build -t mysql_server .
 
 startmysql:
-	docker run --name mysql_server -e MYSQL_ROOT_PASSWORD=admin -p 3306:3306 -d mysql_server
+	  docker run --name mysql_server -e MYSQL_ROOT_PASSWORD=admin -d mysql_server
+	# docker run --name mysql_server -e MYSQL_ROOT_PASSWORD=admin -p 3306:3306 -d mysql_server
 
 killmysql:
 	@docker kill mysql_server ||:

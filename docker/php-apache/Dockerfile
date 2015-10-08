@@ -7,4 +7,7 @@ RUN mkdir /home/dependency-injection-training
 COPY . /home/dependency-injection-training
 WORKDIR /home/dependency-injection-training
 
-CMD [ "php", "./script/run.php" ]
+EXPOSE 3306
+
+CMD ["/bin/true"]
+

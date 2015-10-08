@@ -13,4 +13,4 @@ WORKDIR /home/sql
 EXPOSE 3306
 
 # start the server
-CMD ["mysqld"]
+CMD ["mysqld", "--user=mysql", "--skip-name-resolve", "--bind-address=0.0.0.0", "--pid-file=/var/run/mysqld/mysqld.pid", "--open-files-limit=5120"]
