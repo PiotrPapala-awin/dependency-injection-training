@@ -18,13 +18,8 @@ buildall:
 
 killall:
 	cd docker/mysqldb && make killmysql
-	@docker kill php-apache ||:
-    @docker rm -v php-apache ||:
 
 # Start containers separately
-
-start-php:
-	docker run -it --name php-apache php-apache
 
 start-mysql:
 	cd docker/mysqldb && make startall
@@ -33,7 +28,6 @@ start-mysql:
 
 startall:
 	make start-mysql
-	make start-php
 
 # Start the application
 
