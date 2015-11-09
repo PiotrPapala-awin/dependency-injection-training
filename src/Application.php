@@ -49,7 +49,7 @@ class Application
         
 
         // just run some function
-        $process->doSomething();
+        $process->process();
         
     }
 }
