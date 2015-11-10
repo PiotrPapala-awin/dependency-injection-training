@@ -24,15 +24,18 @@ class Process
         $storage = new Storage();
         
         // Inserting and Selecting Users
-        $storage->add($user);
+        //$storage->add($user);
 
-        echo $message = "Newly inserted user is: '" . $user->getName() . "'"
-                . " user's ID is: " .  $user->getId() . PHP_EOL;
+        //echo $message = "Newly inserted user is: '" . $user->getName() . "'"
+          //      . " user's ID is: " .  $user->getId() . PHP_EOL;
         
-        $storage->find($user);
+       // $storage->find($user);
         
-        echo $message = "Queried user is: '" . $user->getName() . "'"
-                . " user's ID is: " .  $user->getId() . PHP_EOL;
+        //echo $message = "Queried user is: '" . $user->getName() . "'"
+          //      . " user's ID is: " .  $user->getId() . PHP_EOL;
+        
+        // you can either pass 'WHERE id/name/emailAddress = "value"'
+        $storage->update($user, 'WHERE emailAddress = "john@test.com"');
         
         $this->notifier->notify();
     }

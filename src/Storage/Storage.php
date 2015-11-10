@@ -47,4 +47,24 @@ class Storage
         $query = $this->db->query($sql);
         return $results = $query->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+    public function update(User $user, $whereClause = '')
+    {
+        $whereSQL = '';
+        if (!empty($whereClause)) {
+            if (substr(strtoupper(trim($whereClause)), 0, 5) != 'WHERE') {
+                $whereSQL = " WHERE ".$whereClause;
+            } else {
+                $whereSQL = " ".trim($whereClause);
+            }
+        }
+        
+        $sql = "UPDATE users SET name = '".$user->getName()."' "
+                . ", emailAddress = '".$user->getEmailAddress()."' " . " $whereClause ";
+      
+        $query = $this->db->prepare($sql);
+        $query->execute();
+ 
+        return $user;
+    }
 }
