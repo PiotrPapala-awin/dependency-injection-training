@@ -12,27 +12,20 @@ use DependencyInjectionTraining\Storage\Storage;
 class Process
 {
     private $notifier;
-    public function __construct(NotifyInterface $notifier)
+    private $storage;
+    
+    public function __construct(NotifyInterface $notifier, Storage $storage)
     {
           $this->notifier = $notifier;
+          $this->storage = $storage;
     }
     
     public function process()
     {
         // Creating new 'User' and 'Storage' Objects
-        $user = new User("Becky", "becky@test.com");
-        $storage = new Storage();
-        
-        // Inserting and Selecting Users
-        $storage->add($user);
-
-        echo $message = "Newly inserted user is: '" . $user->getName() . "'"
-                . " user's ID is: " .  $user->getId() . PHP_EOL;
-        
-        $storage->find($user);
-        
-        echo $message = "Queried user is: '" . $user->getName() . "'"
-                . " user's ID is: " .  $user->getId() . PHP_EOL;
+        $user = new User(2, "Becky", "becky@test.com");
+     
+        $this->storage->updateUser($user);
         
         $this->notifier->notify();
     }

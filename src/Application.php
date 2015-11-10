@@ -43,13 +43,9 @@ class Application
 
         // create Process object using dependency injection container
         // It will load EmailNotifier automatically and use it to construct object of Process class.
-   
-        
         $process = $this->getDependencyInjectionContainer()->get('process');
-        
 
         // just run some function
         $process->process();
-        
     }
 }
