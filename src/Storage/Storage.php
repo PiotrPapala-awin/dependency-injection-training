@@ -2,8 +2,6 @@
 
 namespace DependencyInjectionTraining\Storage;
 
-//require __DIR__ .'/config.php';
-
 use DependencyInjectionTraining\Entity\User;
 use DependencyInjectionTraining\PdoConfig;
 use PDO;
@@ -36,6 +34,7 @@ class Storage
         $query->execute(array($user->getName(), $user->getEmailAddress()));
         $lastInsertId = $this->db->lastInsertId();
         $user->setId($lastInsertId);
+        
         return $user;
     }
     
@@ -44,7 +43,9 @@ class Storage
         $sql = "SELECT * FROM users WHERE name = '".$user->getName()."' "
                 . "AND emailAddress = '".$user->getEmailAddress()."'";
         
-        $query = $this->db->query($sql);
+        $query = $this->db->prepare($sql);
+        $query->execute();
+        
         return $results = $query->fetchAll(PDO::FETCH_ASSOC);
     }
     
@@ -61,6 +62,18 @@ class Storage
         
         $sql = "UPDATE users SET name = '".$user->getName()."' "
                 . ", emailAddress = '".$user->getEmailAddress()."' " . " $whereClause ";
+      
+        $query = $this->db->prepare($sql);
+        $query->execute();
+ 
+        return $this->find($user);
+    }
+    
+    public function delete(User $user)
+    {
+        
+        $sql = "DELETE FROM users WHERE name = '".$user->getName()."' "
+                . "AND emailAddress = '".$user->getEmailAddress()."' " ;
       
         $query = $this->db->prepare($sql);
         $query->execute();
