@@ -3,14 +3,17 @@ services:
     class: DependencyInjectionTraining\Process
     arguments:
       - @email-notifier
-  
+      - @storage
 
   email-notifier:
     class: DependencyInjectionTraining\EmailNotifier
+   
+  storage:
+    class: DependencyInjectionTraining\Storage\Storage
     
-  #console-notifier:
-      #class: DependencyInjectionTraining\ConsoleNotifier
+    class: DependencyInjectionTraining\Storage\Storage
+    arguments:
+      - @pdoconfig
       
-  #snail-notifier:
-      #class: DependencyInjectionTraining\SnailNotifier  
-      
+  pdoconfig:
+    class: DependencyInjectionTraining\PdoConfig
