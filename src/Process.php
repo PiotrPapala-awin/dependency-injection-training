@@ -7,17 +7,24 @@ namespace DependencyInjectionTraining;
  */
 class Process
 {
+    /**
+     * @var NotifyInterface
+     */
     private $notifier;
 
+    /**
+     * @param NotifyInterface $notifier
+     */
     public function __construct(NotifyInterface $notifier)
     {
           $this->notifier = $notifier;
     }
 
+    /**
+     * Do something
+     */
     public function doSomething()
     {
-        echo "Doing something here...\n";
-      
         $this->notifier->notify();
     }
 }

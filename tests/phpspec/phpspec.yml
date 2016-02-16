@@ -1,0 +1,7 @@
+suites:
+    Main:
+        namespace:   DependencyInjectionTraining
+        spec_prefix: DependencyInjectionTrainingSpec
+        src_path:    src/
+        spec_path:   tests/phpspec/
+        psr4_prefix: DependencyInjectionTraining
